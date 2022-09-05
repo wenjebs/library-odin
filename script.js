@@ -25,34 +25,53 @@ function addBookToLibrary() {
     myLibrary.forEach(book => {
       const bookNode = document.createElement('div');
       bookNode.dataset.number = i;
+
+      //create the book accessing each objects values
+      const bookItem = document.createTextNode(`${book.title}, ${book.author}, ${book.pages}, ${book.read}`);
+
       // create remove button
       const removeButton = document.createElement('button')
       removeButton.textContent = 'X'
       removeButton.classList.add('remove-button');
       removeButton.dataset.number = i;
-      const bookItem = document.createTextNode(`${book.title}, ${book.author}, ${book.pages}, ${book.read}`);
+
+      // create button to switch read or unread
+      const readButton = document.createElement('button')
+      readButton.textContent = 'Read'
+      readButton.classList.add('read-button')
+      readButton.dataset.number = i;
+
       bookNode.appendChild(bookItem);
       bookNode.appendChild(removeButton);
-
+      bookNode.appendChild(readButton);
       library.appendChild(bookNode);
       i++;
     });
   };
-//remove book button USING EVENT BUBBLING SIKKVUNT YO
+//remove book button USING EVENT BUBBLING SIKKVUNT YO ALSO add for switching read
 library.addEventListener("click", (e) => {
   if (e.target.classList.contains('remove-button')) {
     let index = e.target.getAttribute('data-number');
     if (index > -1) {
       myLibrary.splice(index, 1);
     };
+    addBookToLibrary()
   };
-  addBookToLibrary()
+  if (e.target.classList.contains('read-button')) {
+    let index = e.target.getAttribute('data-number');
+    if (myLibrary[index].read == 'True') {
+      myLibrary[index].read = 'False';
+    } else if (myLibrary[index].read == 'False') {
+      myLibrary[index].read = 'True';
+    };
+    addBookToLibrary()
+  };
 });
 
 //add book button
 addBook.addEventListener("click", (e) => {
   if (title.value == '' || author.value == '' || pages.value == '' || !document.querySelector("#input-book").choice.value)  {
-    console.log("Please fill in all the fields")
+    alert("Please fill in all the fields")
     e.preventDefault(); // prevent page refresh
   }
   else {
