@@ -3,8 +3,8 @@ let addBook = document.querySelector("#addBook") // add bk button
 //Book list
 let myLibrary = [];
 // examples
-book1 = new Book('Game of Thrones', 'George RR Martin', '132', 'True')
-book2 = new Book('Hobbit', 'J.R.R Tolkien', '457', 'True')
+let book1 = new Book('Game of Thrones', 'George RR Martin', '132', 'True')
+let book2 = new Book('Hobbit', 'J.R.R Tolkien', '457', 'True')
 myLibrary.push(book1)
 myLibrary.push(book2)
 addBookToLibrary()
@@ -33,10 +33,11 @@ function addBookToLibrary() {
       const bookItem = document.createTextNode(`${book.title}, ${book.author}, ${book.pages}, ${book.read}`);
       bookNode.appendChild(bookItem);
       bookNode.appendChild(removeButton);
+
       library.appendChild(bookNode);
       i++;
     });
-
+  };
 //remove book button USING EVENT BUBBLING SIKKVUNT YO
 library.addEventListener("click", (e) => {
   if (e.target.classList.contains('remove-button')) {
