@@ -1,7 +1,14 @@
-let library = document.querySelector(".library")
-
+let library = document.querySelector(".library") // display container
+let addBook = document.querySelector("#addBook") // button
+//Book list
 let myLibrary = [];
-
+// examples
+book1 = new Book('Game of Thrones', 'George RR Martin', '132', 'True')
+book2 = new Book('Hobbit', 'J.R.R Tolkien', '457', 'True')
+myLibrary.push(book1)
+myLibrary.push(book2)
+addBookToLibrary()
+//Constructor
 function Book(title, author, pages, read) {
    this.title = title; 
    this.author = author;
@@ -9,40 +16,32 @@ function Book(title, author, pages, read) {
    this.read = read;
    this.info = function() {
         return (`${title} by ${author}, ${pages}, ${read}`);
-   }
-}
-
+   };
+};
+//Display book onto page
 function addBookToLibrary() {
+    library.textContent = ''; // clear library
+    let i = 0;
     myLibrary.forEach(book => {
       const bookNode = document.createElement('div');
       const bookItem = document.createTextNode(`${book.title}, ${book.author}, ${book.pages}, ${book.read}`);
       bookNode.appendChild(bookItem);
+      bookNode.dataset.number = i;
       library.appendChild(bookNode);
+      i++;
     });
-}
+};
 
-book1 = new Book('Game of Thrones', 'George RR Martin', '132', 'True')
-book2 = new Book('Hobbit', 'J.R.R Tolkien', '457', 'True')
-myLibrary.push(book1)
-myLibrary.push(book2)
+addBook.addEventListener("click", (e) => {
+  if (title.value == '' || author.value == '' || pages.value == '' || !document.querySelector("#input-book").choice.value)  {
+    console.log("Please fill in all the fields")
+    e.preventDefault(); // prevent page refresh
+  }
+  else {
+    let book = new Book(title.value, author.value, pages.value, document.querySelector("#input-book").choice.value);
+    e.preventDefault();
+    myLibrary.push(book);
+    addBookToLibrary();
+  }
+});
 
-
-// function myFunction() {
-//     let x = document.querySelector("#input-book");
-//     let text = "";
-//     let i;
-//     for (i = 0; i < x.length ;i++) {
-//       text += x.elements[i].value + "<br>";
-//     }
-//     let demo = document.querySelector("#demo");
-//     demo.innerHTML = text;
-// };
-
-/*Write a function that loops through the array and displays each book on the page. 
-You can display them in some sort of table, or each on their own “card”. 
-It might help for now to manually add a few books to your array so you can see the display.
-
-can access input values 
-by using queryslector/ id selector then as an object.
-eg x.Title.value
-*/
