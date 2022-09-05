@@ -1,5 +1,5 @@
 let library = document.querySelector(".library") // display container
-let addBook = document.querySelector("#addBook") // button
+let addBook = document.querySelector("#addBook") // add bk button
 //Book list
 let myLibrary = [];
 // examples
@@ -24,14 +24,31 @@ function addBookToLibrary() {
     let i = 0;
     myLibrary.forEach(book => {
       const bookNode = document.createElement('div');
+      bookNode.dataset.number = i;
+      // create remove button
+      const removeButton = document.createElement('button')
+      removeButton.textContent = 'X'
+      removeButton.classList.add('remove-button');
+      removeButton.dataset.number = i;
       const bookItem = document.createTextNode(`${book.title}, ${book.author}, ${book.pages}, ${book.read}`);
       bookNode.appendChild(bookItem);
-      bookNode.dataset.number = i;
+      bookNode.appendChild(removeButton);
       library.appendChild(bookNode);
       i++;
     });
-};
 
+//remove book button USING EVENT BUBBLING SIKKVUNT YO
+library.addEventListener("click", (e) => {
+  if (e.target.classList.contains('remove-button')) {
+    let index = e.target.getAttribute('data-number');
+    if (index > -1) {
+      myLibrary.splice(index, 1);
+    };
+  };
+  addBookToLibrary()
+});
+
+//add book button
 addBook.addEventListener("click", (e) => {
   if (title.value == '' || author.value == '' || pages.value == '' || !document.querySelector("#input-book").choice.value)  {
     console.log("Please fill in all the fields")
