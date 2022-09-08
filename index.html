@@ -9,24 +9,25 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1 class="header">myLibrary</h1>
-
-    <div class="library"></div>
-
-
-    <form action="" id="input-book">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title">
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author">
-        <label for="pages">Pages:</label>
-        <input type="text" id="pages" name="pages">
-        <div>Read?</div>
-        <label for="true">Yes</label>
-        <input type="radio" id="true" name="choice" value="true">
-        <label for="false">No</label>
-        <input type="radio" id="false" name="choice" value="false">
-        <input type="submit" value="Submit" id="addBook">
-    </form>
+    <div class="main-container">
+        <h1 class="header">myLibrary</h1>
+        <div class="container">
+            <div class="library"></div>
+            <form action="" id="input-book">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+                <label for="pages">Pages:</label>
+                <input type="number" id="pages" name="pages">
+                <div>Read?</div>
+                <label for="true">Yes</label>
+                <input type="radio" id="true" name="choice" value="True">
+                <label for="false">No</label>
+                <input type="radio" id="false" name="choice" value="False">
+                <input type="submit" value="Submit" id="addBook">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

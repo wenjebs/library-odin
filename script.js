@@ -27,7 +27,7 @@ function addBookToLibrary() {
       bookNode.dataset.number = i;
 
       //create the book accessing each objects values
-      const bookItem = document.createTextNode(`${book.title}, ${book.author}, ${book.pages}, ${book.read}`);
+      const bookItem = document.createTextNode(`Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Read: ${book.read}`);
 
       // create remove button
       const removeButton = document.createElement('button')
