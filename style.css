@@ -22,6 +22,49 @@ body {
 
 .container {
     background-color: antiquewhite;
-    display: flex;
     flex: 10;
+}
+
+.library {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
+
+.library>div{
+    background-color: gainsboro;
+    width: 250px;
+    height: 250px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    align-items: center;
+}
+
+.read-button,
+.remove-button {
+    border: 0;
+    border-radius: 5px;
+    margin: 10px;
+    width: 50px;
+    
+}
+
+.read-button:hover,
+.remove-button:hover {
+    background-color: aqua;
+    border: 1px solid black;
+}
+
+.form {
+    display: none;
+    height: 100vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }
