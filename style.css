@@ -61,7 +61,13 @@ body {
 
 .form {
     display: none;
-    height: 100vh;
+}
+
+.newform {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: azure;
 }
 
 form {

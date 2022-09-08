@@ -1,6 +1,7 @@
 let library = document.querySelector(".library") // display container
 let addBook = document.querySelector("#addBook") // add bk button
 let addBk = document.querySelector('.add-book')
+let container = document.querySelector('.container')
 //Book list
 let myLibrary = [];
 // examples
@@ -87,7 +88,7 @@ let form1 = document.querySelector('.form');
 addBk.addEventListener('click', () => {
   //document.body.style.opacity ='0.4';
   // pop out new div with form
-  form1.style.display = 'block'
+  form1.className = "newform"
   form1.style.opacity = '1'
   // submit all the goodies
   // 
